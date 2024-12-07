@@ -75,8 +75,29 @@
       overflow: hidden;
     }
 
+    .desk {
+      display: inherit;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .mob {
+      display: none;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 100%;
+    }
+
     /* Hamburger Menu (for mobile) */
     @media (max-width: 768px) {
+      .desk {
+        display: none;
+      }
+
+      .mob {
+        display: inherit;
+      }
+
       nav ul {
         display: none;
         flex-direction: column;
@@ -491,23 +512,23 @@
   <!-- Header -->
   <header style="display: flex; align-items: center; justify-content: space-between; padding: 20px;">
     <div style="display: flex; align-items: center;">
-      <img src="./assets/logo.png" alt="Nova Chance" style="height: 50px; margin-right: 10px;">
-      <div>
-        <h2 style="margin: 0; font-size: 24px; color: #0056b3;">Clinicas Nova Chance</h2>
-        <p style="margin: 0; font-size: 14px; color: #333;">Espaço Terapêutico</p>
-      </div>
+      <img src="./assets/logo.png" alt="Nova Chance" style="height: 80px; margin-right: 10px;">
     </div>
     <span class="menu-toggle" onclick="toggleMenu()" style="font-size: 30px; cursor: pointer;">☰</span>
     <nav>
       <ul style="list-style: none; margin: 0; padding: 0; display: flex;">
-        <li style="margin-left: 20px;"><a href="#sobre-nos" style="text-decoration: none; font-weight: bold; color: #0056b3;">Sobre Nós</a></li>
-        <li style="margin-left: 20px;"><a href="#servicos" style="text-decoration: none; font-weight: bold; color: #0056b3;">Serviços</a></li>
-        <li style="margin-left: 20px;"><a href="#unidades" style="text-decoration: none; font-weight: bold; color: #0056b3;">Unidades</a></li>
+        <li style="margin-left: 20px;"><a href="#sobre-nos"
+            style="text-decoration: none; font-weight: bold; color: #0056b3;">Sobre Nós</a></li>
+        <li style="margin-left: 20px;"><a href="#servicos"
+            style="text-decoration: none; font-weight: bold; color: #0056b3;">Serviços</a></li>
+        <li style="margin-left: 20px;"><a href="#unidades"
+            style="text-decoration: none; font-weight: bold; color: #0056b3;">Unidades</a></li>
       </ul>
     </nav>
   </header>
-  
-  <a href="https://wa.me/5521970407605?text=Gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20tratamento" target="_blank">
+
+  <a href="https://wa.me/5521970407605?text=Gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20tratamento"
+    target="_blank">
     <div
       style="display: flex; justify-content: center; align-items: center; position: fixed; bottom: 20px; right: 20px; z-index: 1000; cursor: pointer;"
       class="ctc-analytics ctc_s_2">
@@ -537,23 +558,24 @@
       </svg>
     </div>
   </a>
-  
+
 
   <!-- Hero Section -->
   <section class="hero">
-    <h1>Restauração de Vidas, Transformação Real</h1>
+    <img src="assets/saib-mais-01.png" alt="" style="max-height: 50px; max-width: 90%;">
     <p>Ajude a transformar vidas e construir um futuro melhor.</p>
-    <a href="https://wa.me/+5521992555959?text=Gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20tratamento" target="_blank">
+    <a href="https://wa.me/+5521992555959?text=Gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20tratamento"
+      target="_blank">
 
-    <button>Comece Agora</button>
+      <button>Comece Agora</button>
     </a>
   </section>
 
   <!-- About Us -->
-  <section  id="sobre-nos" class="about">
+  <section id="sobre-nos" class="about">
     <h2>Sobre Nós</h2>
-    <p>O Espaço Terapêutico Nova Chance é um lugar dedicado à restauração e ao acolhimento. Nossa missão é ajudar
-      aqueles que precisam de suporte emocional e físico, oferecendo um caminho de transformação.</p>
+    <img class="desk" src="assets/saib-mais-02.png" alt="">
+    <img class="mob" src="assets/saib-mais-03.png" alt="">
   </section>
 
   <section id="servicos" class="services">
@@ -562,17 +584,17 @@
     <div>
       <!-- Acompanhamento Nutricional -->
       <div class="service-card">
-       <img src="assets/cap01.png" alt="">
+        <img src="assets/cap01.png" alt="">
       </div>
 
       <!-- Enfermagem 24 horas -->
-      <div class="service-card">        
-       <img src="assets/cap02.png" alt="">
+      <div class="service-card">
+        <img src="assets/cap02.png" alt="">
       </div>
 
       <!-- Atendimento Médico e Psiquiátrico -->
-      <div class="service-card">        
-       <img src="assets/cap03.png" alt="">
+      <div class="service-card">
+        <img src="assets/cap03.png" alt="">
       </div>
 
 
