@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fisioterapia</title>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    header {
+      padding: 20px;
+      color: #0056b3;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header img {
+      height: 50px;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      font-weight: bold;
+      color: #0056b3;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    nav {
+      display: flex;
+      color: #0056b3;
+
+    }
+
+    nav ul {
+      display: flex;
+      color: #0056b3;
+
+    }
+
+    .clinics .clinic {
+      display: inline-block;
+      width: 23%;
+      margin: 20px;
+      text-align: center;
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .desk {
+      display: inherit;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .mob {
+      display: none;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 100%;
+    }
+
+    /* Hamburger Menu (for mobile) */
+    @media (max-width: 768px) {
+      .desk {
+        display: none;
+      }
+
+      .mob {
+        display: inherit;
+      }
+
+      nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background-color: #0056b3;
+        width: 100%;
+        padding: 0;
+        color: white;
+      }
+
+      /* Layout de grid para as clínicas, semelhante aos serviços */
+      .clinics {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        /* Cria um layout de grid flexível */
+        gap: 20px;
+        /* Espaçamento entre os cards */
+        padding: 40px 20px;
+        /* Ajusta o padding da seção */
+        justify-content: center;
+      }
+
+      .clinics .clinic {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+        box-shadow: none;
+        border-radius: 0;
+      }
+
+
+      .clinic {
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .clinic:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      .clinic img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        max-height: 200px;
+        /* Limita a altura da imagem */
+        margin-bottom: 15px;
+        /* Espaçamento entre a imagem e o conteúdo */
+      }
+
+      .clinic h3 {
+        font-size: 1.5em;
+        color: #0056b3;
+        margin-bottom: 10px;
+      }
+
+      .clinic p {
+        font-size: 1.1em;
+        color: #333;
+      }
+
+      /* Ajustes para navegação no modo mobile */
+      .swiper-button-next,
+      .swiper-button-prev {
+        color: #000;
+      }
+
+      nav ul li {
+        text-align: center;
+        padding: 10px;
+      }
+
+      nav ul li a {
+        display: block;
+        color: white;
+      }
+
+
+    }
+
+
+
+
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('./assets/park.png') no-repeat center center/cover;
+      z-index: -1;
+      filter: brightness(60%);
+      /* Deixa a imagem um pouco mais clara */
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.3);
+      /* Reduz a escuridão para um fundo mais claro */
+      z-index: -1;
+    }
+
+
+
+
+    .hero h1 {
+      font-size: 3em;
+      margin-bottom: 0.5em;
+    }
+
+    .hero p {
+      font-size: 1.5em;
+      margin-bottom: 1em;
+    }
+
+    .hero button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .about,
+    .services,
+    .clinics,
+    .testimonials {
+      padding: 50px;
+      text-align: center;
+    }
+
+    .about {
+      background-color: #f0f8ff;
+    }
+
+    .about h2,
+    .services h2,
+    .clinics h2,
+    .testimonials h2 {
+      color: #0056b3;
+      font-size: 2em;
+    }
+
+    .about p {
+      font-size: 1.2em;
+      line-height: 1.6;
+      margin-top: 20px;
+    }
+
+    .services {
+      background-color: #e0f7fa;
+    }
+
+    .services .service {
+      display: inline-block;
+      width: 30%;
+      margin: 20px;
+      text-align: center;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .clinics {
+      background-color: #f9f9f9;
+    }
+
+
+
+    .clinics .clinic img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .clinics .clinic h3 {
+      font-size: 1.4em;
+      margin: 15px 0;
+      color: #007bff;
+    }
+
+    .clinics .clinic p {
+      font-size: 1em;
+      color: #333;
+      padding: 0 10px;
+      margin-bottom: 15px;
+    }
+
+    .carousel {
+      position: relative;
+      width: 100%;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .carousel .prev,
+    .carousel .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .carousel .prev {
+      left: 10px;
+    }
+
+    .carousel .next {
+      right: 10px;
+    }
+
+    .testimonials {
+      background-color: #f9f9f9;
+    }
+
+    .testimonial {
+      background-color: white;
+      padding: 20px;
+      margin: 20px;
+      display: inline-block;
+      width: 40%;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .testimonial p {
+      font-size: 1.1em;
+      font-style: italic;
+    }
+
+    .testimonial .author {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    footer {
+      background-color: #0056b3;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    .services {
+      text-align: center;
+      /* Centraliza o título */
+      margin: 40px 0;
+    }
+
+    .services h2 {
+      margin-bottom: 40px;
+      /* Espaçamento entre o título e os cards */
+      font-size: 2em;
+      /* Tamanho do título */
+      color: #0056b3;
+      /* Cor do título */
+    }
+
+    .services div {
+      display: grid;
+      /* Configura o layout em grid para os cards */
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      /* Configura o número de colunas no grid */
+      gap: 20px;
+      /* Espaçamento entre os cards */
+      justify-content: center;
+      /* Centraliza os cards dentro da grid */
+    }
+
+    .service-card {
+      background-color: #ffffff;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      /* Sombra em volta dos cards */
+      border-radius: 8px;
+      /* Bordas arredondadas */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      /* Efeito ao passar o mouse */
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      /* Sombra mais forte ao passar o mouse */
+    }
+
+    .service-icon {
+      margin-bottom: 15px;
+    }
+
+    .service-icon svg {
+      width: 60px;
+      /* Tamanho ajustado dos ícones */
+      height: 60px;
+      fill: #0056b3;
+      /* Cor azul dos ícones */
+    }
+
+    .service-content h3 {
+      font-size: 1.5em;
+      color: #0056b3;
+    }
+
+    .service-content p {
+      font-size: 1em;
+      color: #333;
+    }
+
+    .clinics-carousel {
+      display: flex;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+    }
+
+    .clinic-slide {
+      min-width: 33.33%;
+      /* Mostra três slides ao mesmo tempo */
+      transition: transform 0.5s ease;
+    }
+
+    .carousel-buttons {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+
+    .carousel-buttons button {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .swiper-container {
+      width: 100%;
+      height: auto;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: auto;
+      max-height: 400px;
+      object-fit: cover;
+    }
+
+
+
+    /* Estilo responsivo para telas menores */
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header style="display: flex; align-items: center; justify-content: space-between; padding: 20px;">
+    <div style="display: flex; align-items: center;">
+    </div>
+    <span class="menu-toggle" onclick="toggleMenu()" style="font-size: 30px; cursor: pointer;">☰</span>
+    <nav>
+      <ul style="list-style: none; margin: 0; padding: 0; display: flex;">
+        <li style="margin-left: 20px;"><a href="#sobre-nos"
+            style="text-decoration: none; font-weight: bold; color: #0056b3;">Sobre Nós</a></li>
+        <li style="margin-left: 20px;"><a href="#servicos"
+            style="text-decoration: none; font-weight: bold; color: #0056b3;">Serviços</a></li>
+        <li style="margin-left: 20px;"><a href="#unidades"
+            style="text-decoration: none; font-weight: bold; color: #0056b3;">Unidades</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+
+
+  <span class="fontstyle0"><strong>MISSÃO</strong></span>
+
+  <span class="fontstyle0">
+  </span><span class="fontstyle1">Oferecer a melhor assistência em reabilitação para pacientes com afecções ortopédicas de alta e média complexidade baseado no aprimoramento profissional, no ensino e pesquisa e na gestão, em busca da melhoria contínua.</span>
+  
+  <span class="fontstyle1">
+  </span><strong><span class="fontstyle0">VISÃO</span></strong>
+  
+  <span class="fontstyle0">
+  </span><span class="fontstyle1">Consolidar o reconhecimento Nacional e Internacional em qualidade e inovação na reabilitação em traumatologia e ortopedia.</span>
+  
+  <span class="fontstyle1">
+  </span><span class="fontstyle0"><strong>VALORES E PRINCÍPIOS</strong></span>
+  
+  <span class="fontstyle0">
+  </span><span class="fontstyle3">• </span><span class="fontstyle1">Humanização e empatia
+  </span><span class="fontstyle3">• </span><span class="fontstyle1">Foco no paciente
+  </span><span class="fontstyle3">• </span><span class="fontstyle1">Qualidade e segurança
+  </span><span class="fontstyle3">• </span><span class="fontstyle1">Inovação
+  </span><span class="fontstyle3">• </span><span class="fontstyle1">Trabalho em equipe
+  </span><span class="fontstyle3">• </span><span class="fontstyle1">Transparência e ética
+  </span><span class="fontstyle3">• </span><span class="fontstyle1">Geração e disseminação do conhecimento
+  </span><span class="fontstyle0">Lema: INTO – Humanização e Qualidade</span>
+  
+  <span class="fontstyle0">
+  </span>O INTO, por ser um instituto de referência nacional em ortopedia e traumatologia do Ministério da Saúde, recebe pacientes com doenças ortopédicas de alta complexidade encaminhadas de diversos estados do país, muitos deles com patologias de difícil resolução. E cabe a equipe de reabilitação orientar, reabilitar e devolver esses pacientes aos seus locais de origem reabilitados para que retomem sua vida com dignidade.
+  
+  A Área de Reabilitação (AREAB) do Instituto Nacional de Traumatologia e Ortopedia (INTO) é especializada no tratamento das doenças ortopédicas, com foco principalmente nas do membro superior, na reabilitação de pacientes amputados, bem como nas disfagias.
+  
+  A AREAB é formada por uma equipe multidisciplinar, composta por assistentes sociais, agentes administrativos, médicos fisiatras, fonoaudiólogos, ortopedista, terapeutas ocupacionais,técnicos em assuntos educacionais, técnico em enfermagem. Conta também com a participação de psicólogos da Área da Saúde Mental (ARMEN) em sua equipe. Sua missão é oferecer aos pacientes do Sistema Único de Saúde (SUS), tratamento de reabilitação de alta e média complexidade com eficiência e segurança nas áreas da Mão, do Ombro, da Microcirurgia, do Trauma, do centro de Amputados (CAMPU), da pediatria, da craniomaxilofacial e da coluna. Sendo essas duas últimas atuações com ênfase nos pacientes disfágicos.
+  
+  A área de reabilitação está preparada para receber os pacientes encaminhados pelos Centros especializados e oferecer com segurança o acompanhamento no pós-operatório imediato, favorecendo assim melhores resultados nos procedimentos cirúrgicos.
+  
+  A proximidade entre os cirurgiões e a equipe de reabilitação aumenta consideravelmente o sucesso do plano de cuidados e a plena reabilitação das funções e atividades desempenhadas pelo paciente antes da intervenção cirúrgica. E na impossibilidade de retorno completo as antigas capacidades, a equipe foca na adaptação de tarefas garantindo ao paciente a manutenção de seu desempenho ocupacional nas atividades básicas de vida diária.
+  
+  <strong><span class="fontstyle0">“Devolver a autonomia ao paciente ortopédico é uma prerrogativa e objetivo central que norteia a equipe de profissionais da reabilitação.”</span></strong>
+  
+  <span class="fontstyle0">A área de reabilitação disponibiliza um programa de educação continuada na subespecialidade de Terapia Ocupacional em contextos hospitalares destinado a terapeutas ocupacionais interessados em atualização especifica na área de traumatologia e ortopedia. Mantem também convênio com universidades para o oferecimento de estagio curricular em terapia ocupacional na traumatologia e ortopedia.</span>
+  
+  <span class="fontstyle0">A área de reabilitação conta com equipe de agentes administrativos responsáveis pela organização, abastecimento e distribuição de insumos necessários ao pleno funcionamento das equipes técnicas, além de cuidar de toda a logística no fornecimento de órteses e próteses sob medida para todos os pacientes do INTO que tem essa indicação.</span>
+  
+  <span class="fontstyle0">
+  Equipe AREAB:</span>
+  
+  <span class="fontstyle0">
+  Alexandre Lima de Freitas
+  Bárbara Luiza Marinho da Silva
+  Cristianne Akie Kavamoto
+  Cristina Ribeiro Ferreira de Souza
+  Diana de Mesquita Siqueira
+  Doralice das Graças Calvo Rosa
+  Eduarda Missick G. Mureb de Azevedo
+  Eliane Batista Alves Santos
+  Ellen Espindola Alves
+  Gisele de Souza Santiago
+  Gledson Nunes da Silva
+  José Domingos Baldini Levy
+  Jullana Alves P. Henderson Cardoso
+  Livia Freire Gentil de Andrade
+  Maiza Brandão de Santanna
+  Marcelo da Silva Guimarães
+  Márcia Gomes de Alencar
+  Maria da Conceição Soares de Oliveira
+  Mariana Moreira da Silva
+  Martha Cristina Paula de M. Lucas
+  Max William Claudino Anastácio
+  Mônica Silva de Jesus Nerys
+  Rafael de Barros Soares
+  Rita de Cássia Canela Carvalho Costa
+  Rosa Maria Dias Cardoso da Silva
+  Sandra Helena Lopes de Moura
+  Simone Ribeiro Leite Nunes
+  Tatiana Damasceno da Hora
+  Tatiane Ferreira Lopes
+  Zuleica Rodrigues de Melo</span>
+
+
+  <!-- Footer -->
+  <footer>
+    <p> Nova Chance © 2024 - Todos os direitos reservados</p>
+  </footer>
+
+
+
+
+
+
+</body>
+
+</html>
